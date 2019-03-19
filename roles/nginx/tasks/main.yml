@@ -13,11 +13,10 @@
     name: nginx
     state: latest
 
+- name: Configure Nginx server
+  template: src=nginx.conf dest=/etc/nginx/
+
 - name: start nginx
   service:
     name: nginx
     state: started
-
-- name: Configure Nginx server
-  template: src=nginx.conf dest=/etc/nginx/
-  notify: restart nginx
