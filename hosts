@@ -1,6 +1,6 @@
-[tomcat:vars]
-tomcat_server_1=10.0.1.9
-tomcat_server_2=10.0.1.182
+[tomcat]
+10.0.1.9
+10.0.1.182
 
-[nginx:vars]
-nginx_server=10.0.0.130
+[nginx]
+10.0.0.130
