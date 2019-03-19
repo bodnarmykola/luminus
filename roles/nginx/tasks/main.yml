@@ -13,12 +13,11 @@
     name: nginx
     state: latest
 
-- name: nginx install
-  yum:
-    name: nginx
-    state: latest
-
 - name: start nginx
   service:
     name: nginx
     state: started
+
+- name: Configure Nginx server
+  template: src=default.conf dest=/etc/nginx/conf.d/
+  notify: restart nginx
