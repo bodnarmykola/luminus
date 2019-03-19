@@ -19,5 +19,5 @@
     state: started
 
 - name: Configure Nginx server
-  template: src=default.conf dest=/etc/nginx/conf.d/
+  template: src=nginx.conf dest=/etc/nginx/
   notify: restart nginx
