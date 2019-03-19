@@ -3,10 +3,10 @@
   become: yes
   gather_facts: no
 
-  hosts: tomcat
-  roles:
-    - tomcat
+  - hosts: tomcat
+    roles:
+      - tomcat
 
-  hosts: nginx
-  roles:
-    - nginx
+  - hosts: nginx
+    roles:
+      - nginx
