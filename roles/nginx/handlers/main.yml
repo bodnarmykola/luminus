@@ -1,4 +1,4 @@
 ---
 # handlers file for nginx
-- name: restart tomcat
+- name: restart nginx
   service: name=nginx state=restarted
