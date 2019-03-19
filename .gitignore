@@ -1,0 +1,7 @@
+keys.sh
+*.tfstate*
+.terraform/*
+*.bak
+tmp/*
+*.retry
+hosts
