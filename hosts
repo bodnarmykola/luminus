@@ -1,6 +1,6 @@
-[tomcat]
-{{ tomcat_server_1 }}
-{{ tomcat_server_2 }}
+[tomcat:vars]
+tomcat_server_1=10.0.1.9
+tomcat_server_2=10.0.1.182
 
 [nginx]
-{{ nginx_server }}
+nginx_server=10.0.0.130
