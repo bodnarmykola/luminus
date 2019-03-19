@@ -3,6 +3,16 @@
 - name: Enable amazon-linux-extras epel
   shell: "amazon-linux-extras enable epel"
 
+- name: epel install
+  yum:
+    name: epel-release
+    state: installed
+
+- name: nginx install
+  yum:
+    name: nginx
+    state: latest
+
 - name: nginx install
   yum:
     name: nginx
