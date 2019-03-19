@@ -4,19 +4,6 @@ provider "aws" {
   region     = "us-west-2"
 }
 
-resource "aws_instance" "ec2jenkins" {
-  ami           = "ami-032509850cf9ee54e"
-  instance_type = "t2.micro"
-  subnet_id     = "subnet-07c6811d5a119875c"
-  key_name      = "Ec2KeyPair"
-  associate_public_ip_address = "true"
-  security_groups = ["sg-0df871cb89d78602d"]
-  tags = {
-    type = "Jenkins"
-    Name = "Jenkins"
-  }
-}
-
 resource "aws_instance" "ec2mginx" {
   ami           = "ami-032509850cf9ee54e"
   instance_type = "t2.micro"

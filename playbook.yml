@@ -1,8 +1,12 @@
 ---
 - name: playbook
-  hosts: tomcat
   become: yes
   gather_facts: no
 
+  hosts: tomcat
   roles:
     - tomcat
+
+  hosts: nginx
+  roles:
+    - nginx
