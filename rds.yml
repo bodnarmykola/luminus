@@ -1,6 +1,6 @@
 ---
 - name: Create RDS Instance
-  rds:
+  - rds:
     command: create
     db_name: base1
     region: us-west-2
