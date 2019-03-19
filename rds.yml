@@ -1,0 +1,20 @@
+---
+- name: Create RDS Instance
+  rds:
+    command: create
+    db_name: base1
+    region: us-west-2
+    instance_name: database
+    db_engine: MySQL
+    engine_version: 5.6
+    size: 20
+    instance_type: db.t2.micro
+    username: db_user
+    password: db_password
+    parameter_group: default.mysql5.6
+    publicly_accessible: no
+    vpc_security_groups: sg-0f3a3a8c22bbf81e5
+    subnet: subnet-01383d6fcf8472c81
+    tags:
+      Environment: testing
+      Name: test
