@@ -4,4 +4,3 @@ keys.sh
 *.bak
 tmp/*
 *.retry
-hosts
