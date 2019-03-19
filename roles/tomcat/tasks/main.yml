@@ -56,5 +56,8 @@
 - name: Setup a Systemd unit file for Apache Tomcat
   copy: src=tomcat.service dest=/etc/systemd/system/
 
+- name: Deploy sample.war to tomcat servers
+  copy: src=https://tomcat.apache.org/tomcat-7.0-doc/appdev/sample/sample.war dest=/opt/tomcat/webapps/
+
 - name: Start Tomcat
   service: name=tomcat state=started enabled=yes
