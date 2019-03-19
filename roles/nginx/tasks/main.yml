@@ -1,0 +1,14 @@
+---
+# tasks file for nginx
+- name: Enable amazon-linux-extras epel
+  shell: "amazon-linux-extras enable epel"
+
+- name: nginx install
+  yum:
+    name: nginx
+    state: latest
+
+- name: start nginx
+  service:
+    name: nginx
+    state: started
