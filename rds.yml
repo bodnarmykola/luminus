@@ -1,5 +1,7 @@
 ---
-- rds:
+tasks:
+- name: ensure apache is at the latest version
+  rds:
     command: create
     db_name: base1
     region: us-west-2
