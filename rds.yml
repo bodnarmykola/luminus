@@ -1,5 +1,5 @@
 ---
-- name: rds create
+- name: basa create
   rds:
     command: create
     db_name: base1
