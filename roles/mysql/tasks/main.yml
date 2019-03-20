@@ -15,7 +15,7 @@
   yum_repository:
     name: mysql
     description: MySql YUM repo
-    baseurl: http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm
+    baseurl: https://dev.mysql.com/downloads/repo/yum/mysql80-community-release-el7-2.noarch.rpm
 
 - name: Install the MySQL packages
   yum:
