@@ -22,8 +22,7 @@
     name: "{{ item }}"
     state: installed
   loop:
-    - mysql-5.6-community-server
-    - mysql-5.6-community-client
+    - mysql56-community
     - python-mysqldb
     - libmysqlclient-dev
 
