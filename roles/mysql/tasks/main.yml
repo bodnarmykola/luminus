@@ -1,5 +1,13 @@
 ---
 # tasks file for mysql
+- name: Enable amazon-linux-extras epel
+  shell: "amazon-linux-extras enable epel"
+
+- name: epel install
+  yum:
+    name: epel-release
+    state: installed
+
 - name: Install the MySQL packages
   yum:
     name: "{{ item }}"
