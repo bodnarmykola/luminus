@@ -5,8 +5,16 @@
 
 - name: epel install
   yum:
-    name: epel-release
+    name: "{{ item }}"
     state: installed
+  loop:
+    - epel-release
+    - wget
+
+- name: Add repository
+  yum_repository:
+    name: mysql
+    baseurl: http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm
 
 - name: Install the MySQL packages
   yum:
