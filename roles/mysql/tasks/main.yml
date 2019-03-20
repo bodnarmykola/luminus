@@ -11,13 +11,10 @@
     - epel-release
     - wget
 
-- name: Get repo
-  get_url:
-    url: https://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm
-    dest: /home/
-
 - name: Install repo
-  command: rpm -ivh /home/mysql57-community-release-el7-11.noarch.rpm
+  yum:
+    name: https://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm
+    state: present
 
 - name: Install the MySQL packages
   yum:
