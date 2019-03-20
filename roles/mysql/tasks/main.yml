@@ -11,21 +11,24 @@
     - epel-release
     - wget
 
-- name: download remi-mysql repo
-  get_url: url=http://dev.mysql.com/get/mysql57-community-release-el7-9.noarch.rpm dest=/tmp/mysql57-community-release-el7-9.noarch.rpm
-  tags: mysql
+- name: Add repository
+  yum_repository:
+    name: mysql
+    description: Mysq YUM repo
+    baseurl: https://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm
 
-- name: install remi-mysql repo
-  shell: /bin/rpm -Uvh /tmp/mysql57-community-release-el7-9.noarch.rpm
+- name: disqble bad repo
+  shell: yum-config-manager --disable mysql
 
-- name: install MySQL
-  yum: name={{item}} state=present
-  with_items:
-  - mysql
-  - mysql-server
-  tags:
-  - mysql
-  - mysql-service
+- name: Install the MySQL packages
+  yum:
+    name: "{{ item }}"
+    state: installed
+  loop:
+    - mysql-server
+    - mysql-client
+    - python-mysqldb
+    - libmysqlclient-dev
 
 - name: Update MySQL root password for all root accounts
   mysql_user: name=root host="{{ item }}" password="{{ mysql_root_pass }}" state=present
