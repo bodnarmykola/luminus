@@ -17,7 +17,7 @@
     dest: /home/
 
 - name: Install repo
-  shell: rpm -ivh /home/mysql57-community-release-el7-11.noarch.rpm
+  command: rpm -ivh /home/mysql57-community-release-el7-11.noarch.rpm
 
 - name: Install the MySQL packages
   yum:
