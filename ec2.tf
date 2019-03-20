@@ -11,6 +11,7 @@ resource "aws_instance" "ec2nginx" {
   key_name      = "Ec2KeyPair"
   associate_public_ip_address = "true"
   security_groups = ["sg-0df871cb89d78602d"]
+  private_ip = "10.0.0.10"
   tags = {
     type = "Nginx_Server"
     Name = "Nginx_Server"
@@ -24,6 +25,7 @@ resource "aws_instance" "ec2firsttomcat" {
   key_name      = "Ec2KeyPair"
   associate_public_ip_address = "false"
   security_groups = ["sg-059a0455a434a0929"]
+  private_ip = "10.0.1.10"
   tags = {
     type = "First_Tomcat_Server"
     Name = "First_Tomcat_Server"
@@ -37,6 +39,7 @@ resource "aws_instance" "ec2secondtomcat" {
   key_name      = "Ec2KeyPair"
   associate_public_ip_address = "false"
   security_groups = ["sg-059a0455a434a0929"]
+  private_ip = "10.0.1.20"
   tags = {
     type = "Second_Tomcat_Server"
     Name = "Second_Tomcat_Server"
@@ -50,6 +53,7 @@ resource "aws_instance" "ec2mysql" {
   key_name      = "Ec2KeyPair"
   associate_public_ip_address = "false"
   security_groups = ["sg-059a0455a434a0929"]
+  private_ip = "10.0.1.30"
   tags = {
     type = "MySQL_Server"
     Name = "MySQL_Server"
