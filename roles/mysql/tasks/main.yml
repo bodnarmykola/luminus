@@ -17,7 +17,7 @@
     description: Mysq YUM repo
     baseurl: https://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm
 
-- name: disqble bad repo
+- name: Disqble bad repo
   shell: yum-config-manager --disable mysql
 
 - name: Install the MySQL packages
