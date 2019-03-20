@@ -26,6 +26,7 @@
     state: installed
   loop:
     - mysql
+    - MySQL-python
 
 - name: Update MySQL root password for all root accounts
   mysql_user: name=root host="{{ item }}" password="{{ mysql_root_pass }}" state=present
