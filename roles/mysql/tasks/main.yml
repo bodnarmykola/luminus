@@ -11,18 +11,24 @@
     - epel-release
     - wget
 
-- name: Add repository
-  yum_repository:
-    name: mysql
-    description: Mysq YUM repo
-    baseurl: https://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm
+- name: download remi-mysql repo
+  get_url: url=http://rpms.famillecollet.com/enterprise/6/test/x86_64/compat-mysql55-5.5.11-1.el6.remi.x86_64.rpm dest=/tmp/compat-mysql5.5.11.remi.rpm
+  tags: mysql
 
-- name: Install the MySQL packages
-  yum:
-    name: "{{ item }}"
-    state: installed
-  loop:
-    - mysql-community-server
+- name: install remi-mysql repo
+  shell: /bin/rpm -Uvh /tmp/compat-mysql5.5.11.remi.rpm
+  register: remi_mysql_repo_result
+  failed_when: "'conflict' in remi_mysql_repo_result.stderr"
+  tags: mysql
+
+- name: install MySQL
+  yum: name={{item}} state=present
+  with_items:
+  - mysql
+  - mysql-server
+  tags:
+  - mysql
+  - mysql-service
 
 - name: Update MySQL root password for all root accounts
   mysql_user: name=root host="{{ item }}" password="{{ mysql_root_pass }}" state=present
