@@ -4,7 +4,7 @@ provider "aws" {
   region     = "us-west-2"
 }
 
-resource "aws_instance" "ec2mginx" {
+resource "aws_instance" "ec2nginx" {
   ami           = "ami-032509850cf9ee54e"
   instance_type = "t2.micro"
   subnet_id     = "subnet-07c6811d5a119875c"
@@ -12,8 +12,8 @@ resource "aws_instance" "ec2mginx" {
   associate_public_ip_address = "true"
   security_groups = ["sg-0df871cb89d78602d"]
   tags = {
-    type = "Nginx"
-    Name = "Nginx"
+    type = "Nginx_Server"
+    Name = "Nginx_Server"
   }
 }
 
@@ -26,7 +26,7 @@ resource "aws_instance" "ec2firsttomcat" {
   security_groups = ["sg-059a0455a434a0929"]
   tags = {
     type = "First_Tomcat_Server"
-    Name = "First_Tomcat_Serve"
+    Name = "First_Tomcat_Server"
   }
 }
 
@@ -38,7 +38,20 @@ resource "aws_instance" "ec2secondtomcat" {
   associate_public_ip_address = "false"
   security_groups = ["sg-059a0455a434a0929"]
   tags = {
-    type = "Second_Tomcat_Serve"
-    Name = "Second_Tomcat_Serve"
+    type = "Second_Tomcat_Server"
+    Name = "Second_Tomcat_Server"
+  }
+}
+
+resource "aws_instance" "ec2mysql" {
+  ami           = "ami-032509850cf9ee54e"
+  instance_type = "t2.micro"
+  subnet_id     = "subnet-01383d6fcf8472c81"
+  key_name      = "Ec2KeyPair"
+  associate_public_ip_address = "false"
+  security_groups = ["sg-059a0455a434a0929"]
+  tags = {
+    type = "MySQL_Server"
+    Name = "MySQL_Server"
   }
 }
