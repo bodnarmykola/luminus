@@ -14,15 +14,16 @@
 - name: Add repository
   yum_repository:
     name: mysql
-    description: MySql YUM repo
-    baseurl: https://dev.mysql.com/downloads/repo/yum/mysql80-community-release-el7-2.noarch.rpm
+    description: Mysq YUM repo
+    baseurl: http://repo.mysql.com/mysql-community-release-el6-5.noarch.rpm
 
 - name: Install the MySQL packages
   yum:
     name: "{{ item }}"
     state: installed
   loop:
-    - mysql56-community
+    - mysql-server
+    - mysql-client
     - python-mysqldb
     - libmysqlclient-dev
 
