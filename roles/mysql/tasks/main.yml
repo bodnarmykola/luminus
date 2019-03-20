@@ -29,7 +29,7 @@
     - MySQL-python
 
 - name: Update MySQL root password for all root accounts
-  mysql_user: name=root host="{{ item }}" password="{{ mysql_root_pass }}" state=present
+  mysql_user: name=root host="{{ item }}" password=password state=present
   with_items:
     - "{{ ansible_hostname }}"
     - 127.0.0.1
