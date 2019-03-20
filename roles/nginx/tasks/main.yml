@@ -14,7 +14,9 @@
     state: latest
 
 - name: Configure Nginx server
-  template: src=nginx.conf dest=/etc/nginx/
+  template:
+    src: nginx.conf
+    dest: /etc/nginx/
 
 - name: start nginx
   service:

@@ -33,31 +33,55 @@
     - --strip-components=1
 
 - name: Symlink install directory
-  file: src=/opt/tomcat path=/usr/share/tomcat state=link
+  file:
+    src: /opt/tomcat
+    path: /usr/share/tomcat
+    state: link
 
 - name: Change ownership of Tomcat installation
-  file: path=/usr/share/tomcat/ owner=tomcat group=tomcat state=directory recurse=yes
+  file:
+    path: /usr/share/tomcat/
+    owner: tomcat
+    group: tomcat
+    state: directory
+    recurse: yes
 
 - name: Configure Tomcat server
-  template: src=server.xml dest=/usr/share/tomcat/conf/
+  template:
+    src: server.xml
+    dest: /usr/share/tomcat/conf/
   notify: restart tomcat
 
 - name: Configure Tomcat users
-  template: src=tomcat-users.xml dest=/usr/share/tomcat/conf/
+  template:
+    src: tomcat-users.xml
+    dest: /usr/share/tomcat/conf/
   notify: restart tomcat
 
 - name: Configure Tomcat users access
-  template: src=context.xml dest=/opt/tomcat/webapps/manager/META-INF/
+  template:
+    src: context.xml
+    dest: /opt/tomcat/webapps/manager/META-INF/
   notify: restart tomcat
 
 - name: Install Tomcat init script
-  copy: src=tomcat-initscript.sh dest=/etc/init.d/tomcat mode=0755
+  copy:
+    src: tomcat-initscript.sh
+    dest: /etc/init.d/tomcat
+    mode: 0755
 
 - name: Setup a Systemd unit file for Apache Tomcat
-  copy: src=tomcat.service dest=/etc/systemd/system/
+  copy:
+    src: tomcat.service
+    dest: /etc/systemd/system/
 
 - name: Deploy sample.war to tomcat servers
-  get_url: url=https://tomcat.apache.org/tomcat-7.0-doc/appdev/sample/sample.war dest=/opt/tomcat/webapps/
+  get_url:
+    url: https://tomcat.apache.org/tomcat-7.0-doc/appdev/sample/sample.war
+    dest: /opt/tomcat/webapps/
 
 - name: Start Tomcat
-  service: name=tomcat state=started enabled=yes
+  service:
+    name: tomcat
+    state: started
+    enabled: yes
