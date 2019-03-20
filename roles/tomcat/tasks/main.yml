@@ -26,7 +26,7 @@
 
 - name: Unarchive a file with extra options
   unarchive:
-    src: http://www-us.apache.org/dist/tomcat/tomcat-8/v8.5.38/bin/apache-tomcat-8.5.38.tar.gz
+    src: http://www-us.apache.org/dist/tomcat/tomcat-8/v8.5.38/bin/apache-tomcat-8.5.39.tar.gz
     dest: /opt/tomcat
     remote_src: yes
     extra_opts:
