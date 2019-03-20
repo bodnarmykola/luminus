@@ -1,7 +1,7 @@
 ---
 # tasks file for mysql
 - name: Install the MySQL packages
-   apt: name={{ item }} state=installed update_cache=yes
+   yum: name={{ item }} state=installed update_cache=yes
    with_items:
      - mysql-server-5.6
      - mysql-client-5.6
