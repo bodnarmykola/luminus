@@ -14,6 +14,7 @@
 - name: Add repository
   yum_repository:
     name: mysql
+    description: MySql YUM repo
     baseurl: http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm
 
 - name: Install the MySQL packages
