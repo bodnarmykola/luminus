@@ -11,25 +11,24 @@
     - epel-release
     - wget
 
-- name: Add repository
-  yum_repository:
-    name: mysql
-    description: Mysq YUM repo
-    baseurl: https://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm
+- name: Get repo
+  get_url:
+    url: https://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm
+    dest: ~/
 
-- name: Disqble bad repo
-  shell: yum-config-manager --disable mysql
+- name: Install repo
+  shell: rpm -ivh mysql57-community-release-el7-11.noarch.rpm; yum update
 
 - name: Install the MySQL packages
   yum:
     name: "{{ item }}"
     state: installed
   loop:
-    - mysql
+    - mysql-server
     - MySQL-python
 
 - name: Start MySQL
   service:
-    name: mysql
+    name: mysqld
     state: started
     enabled: yes
