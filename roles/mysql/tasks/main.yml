@@ -14,9 +14,10 @@
 - name: Get repo
   get_url:
     url: https://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm
+    dest: /home/
 
 - name: Install repo
-  shell: rpm -ivh mysql57-community-release-el7-11.noarch.rpm
+  shell: rpm -ivh /home/mysql57-community-release-el7-11.noarch.rpm
 
 - name: Install the MySQL packages
   yum:
