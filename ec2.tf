@@ -44,7 +44,7 @@ resource "aws_instance" "ec2secondtomcat" {
 }
 
 resource "aws_instance" "ec2mysql" {
-  ami           = "ami-032509850cf9ee54e"
+  ami           = "ami-005bdb005fb00e791"
   instance_type = "t2.micro"
   subnet_id     = "subnet-01383d6fcf8472c81"
   key_name      = "Ec2KeyPair"

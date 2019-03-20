@@ -1,28 +1,11 @@
 ---
 # tasks file for mysql
-- name: Enable amazon-linux-extras epel
-  shell: "amazon-linux-extras enable epel"
-
-- name: epel install
-  yum:
-    name: "{{ item }}"
-    state: installed
-  loop:
-    - epel-release
-    - wget
-
-- name: Add repository
-  yum_repository:
-    name: mysql
-    description: Mysq YUM repo
-    baseurl: http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm
-
 - name: Install the MySQL packages
-  yum:
+  apt:
     name: "{{ item }}"
     state: installed
   loop:
-    - mysql mysql-server
+    - mysql-server
     - mysql-client
     - python-mysqldb
     - libmysqlclient-dev
