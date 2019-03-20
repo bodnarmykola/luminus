@@ -1,14 +1,28 @@
 ---
 # tasks file for mysql
-- name: Install the MySQL packages
-  apt:
+- name: Enable amazon-linux-extras epel
+  shell: "amazon-linux-extras enable epel"
+
+- name: epel install
+  yum:
     name: "{{ item }}"
     state: installed
   loop:
-    - mysql-server
-    - mysql-client
-    - python-mysqldb
-    - libmysqlclient-dev
+    - epel-release
+    - wget
+
+- name: Add repository
+  yum_repository:
+    name: mysql
+    description: Mysq YUM repo
+    baseurl: https://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm
+
+- name: Install the MySQL packages
+  yum:
+    name: "{{ item }}"
+    state: installed
+  loop:
+    - mysql-community-server
 
 - name: Update MySQL root password for all root accounts
   mysql_user: name=root host="{{ item }}" password="{{ mysql_root_pass }}" state=present
